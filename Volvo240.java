@@ -1,11 +1,11 @@
 import java.awt.*;
 
-public class Volvo240 extends car{
+public class Volvo240 extends Car{
 
     private final static double trimFactor = 1.25;
     
-    public Volvo240(int nrDoors, double enginePower, double currentSpeed, Color color, String modelname){
-        super(nrDoors, enginePower, currentSpeed, color, modelname);
+    public Volvo240(){
+        super(4, 120, Color.black, "Volvo240");
     }
     
     @Override
