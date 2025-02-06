@@ -14,9 +14,14 @@ public class LoadCar {
     protected void load(Car car){
         if (cargo.size() < this.maxcars){
             if (car.weight < 2000){
+                if(car.getLoaded()){
                 cargo.add(car);
                 car.position = this.position;
                 car.setLoaded();
+                }
+                else{
+                    throw new IllegalArgumentException("Car cannot be loaded if loaded");
+                }
             }
             else{
                 throw new IllegalArgumentException("Car weight exceeds 2 tons");
@@ -27,6 +32,7 @@ public class LoadCar {
         }
 
     }
+
     protected void unload(Car car){
         cargo.remove(car);
     }

@@ -2,10 +2,11 @@ import java.awt.*;
 
 
 public class CarTransport extends Trucks{
-        LoadCar loadCar = new LoadCar(6, this.position);
+        LoadCar loadCar;
 
         public CarTransport(){
             super(2, 120, 6000,Color.GREEN, "Mercedes-Benz Actros", 0);
+            loadCar = new LoadCar(6, this.position);
         }
 
         public void load(Car car){
