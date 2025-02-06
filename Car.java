@@ -8,7 +8,7 @@ public abstract class Car implements Movable {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     final String modelName; // The car model name
-    private double[] position = {0,0}; //position of the car, [0] is x and [1] is y
+    protected double[] position; //position of the car, [0] is x and [1] is y
     private String direction = "n";
 
     public Car(int nrDoors, double enginePower, int weight, Color color, String modelname){
@@ -17,6 +17,7 @@ public abstract class Car implements Movable {
         this.weight = weight;
         this.color = color;
         this.modelName = modelname;
+        this.position = new  double[]{0,0};
         stopEngine();
     }
 

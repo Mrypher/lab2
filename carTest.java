@@ -3,50 +3,50 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.Color;
 
-import org.junit.jupiter.api.RepeatedTest;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-class carTest{
+class CarTest{
 
-    car Car = new car(20,120.0,60.0,Color.red,"Nissan"){};
+    Car car = new Car(20,120.0,1000,Color.red,"Nissan"){};
 
     @Test
     void TestConstructor() {
-        assertEquals(Color.red, Car.getColor());
-        assertEquals(20, Car.getNrDoors());
+        assertEquals(Color.red, car.getColor());
+        assertEquals(20, car.getNrDoors());
     }
 
     @Test
     void TestMove() {
-        Car.turnLeft();
-        assertEquals("w", Car.getDirection());
-        Car.turnRight();
-        assertEquals("n", Car.getDirection());
-        Car.move();
-        assertEquals(new double[]{0.0, 60.0}[1], Car.getPosition()[1]);
-        Car.turnLeft();
-        Car.move();
-        assertEquals(new double[]{-60.0, 60.0}[0], Car.getPosition()[0]);
+        car.turnLeft();
+        assertEquals("w", car.getDirection());
+        car.turnRight();
+        assertEquals("n", car.getDirection());
+        car.move();
+        assertEquals(new double[]{0.0, 60.0}[1], car.getPosition()[1]);
+        car.turnLeft();
+        car.move();
+        assertEquals(new double[]{-60.0, 60.0}[0], car.getPosition()[0]);
     }
 
     @Test
     void TestInterval() {
-        Car.gas(0.5);
-        assertEquals(60.6, Car.getCurrentSpeed());
-        Car.brake(0.5);
-        assertEquals(60, Car.getCurrentSpeed());
+        car.gas(0.5);
+        assertEquals(60.6, car.getCurrentSpeed());
+        car.brake(0.5);
+        assertEquals(60, car.getCurrentSpeed());
         for(int i = 0; i < 10000; i++)
         {
-            Car.gas(0.5);
+            car.gas(0.5);
         }
-        assertEquals(120, Car.getCurrentSpeed());
+        assertEquals(120, car.getCurrentSpeed());
     }
     
     @Test
     void TestIllegalArgument() {
-        Assert.assertThrows(IllegalArgumentException.class, () -> Car.brake(2));
-        Assert.assertThrows(IllegalArgumentException.class, () -> Car.gas(2));
-        Assert.assertThrows(IllegalArgumentException.class, () -> Car.brake(-0.5));
+        Assert.assertThrows(IllegalArgumentException.class, () -> car.brake(2));
+        Assert.assertThrows(IllegalArgumentException.class, () -> car.gas(2));
+        Assert.assertThrows(IllegalArgumentException.class, () -> car.brake(-0.5));
     }
 }
 
