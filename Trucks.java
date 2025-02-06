@@ -1,10 +1,10 @@
 import java.awt.*;
 
-public class Lastbilar extends Car{
+public class Trucks extends Car{
 
     private int platform = 0;
 
-    public Lastbilar(int nrDoors, double enginePower, int weight, Color color, String modelname, int platform ) {
+    public Trucks(int nrDoors, double enginePower, int weight, Color color, String modelname, int platform ) {
         super(nrDoors, enginePower, weight, color, modelname);
         this.platform = platform;
     }
