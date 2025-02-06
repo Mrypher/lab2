@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Trucks extends Car{
+public class Trucks extends VehicleFramework{
 
     private int platform = 0;
 
@@ -9,7 +9,9 @@ public class Trucks extends Car{
         this.platform = platform;
     }
 
-    public int getPlatform(){return platform;}
+    public int getPlatform(){
+        return platform;
+    }
 
     protected void setPlatform(){
         if (getCurrentSpeed()==0){
@@ -19,6 +21,16 @@ public class Trucks extends Car{
             else {
                 platform = 0;
             }
+        }
+    }
+
+    @Override
+    public void move(){
+        if(this.getPlatform() == 0){
+            super.move();
+        }
+        else{
+            throw new IllegalArgumentException("Platform must be of angle 0 to drive");
         }
     }
 }

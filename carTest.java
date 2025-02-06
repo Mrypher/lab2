@@ -40,6 +40,7 @@ class CarTest{
         {
             car.gas(0.5);
         }
+        car.move();
         assertEquals(120, car.getCurrentSpeed());
     }
     
@@ -56,8 +57,23 @@ class CarTest{
 
     @Test
     void TestLoad(){
+        cartransport.setPlatform();
+        saab.gas(0.6);
+        saab.gas(0.6);
+        saab.move();
+
+        Assert.assertThrows(IllegalArgumentException.class, () -> cartransport.load(saab));
+
+        saab.turnRight();
+        saab.turnRight();
+        saab.move();
         cartransport.load(saab);
+
         assertEquals(Color.red, cartransport.loadCar.cargo.get(0).getColor());
+        assertEquals(new double[]{0.0,0.0}[0] , saab.getPosition()[0]);
+        assertEquals(new double[]{0.0,0.0}[1] , saab.getPosition()[1]);
+        Assert.assertThrows(IllegalArgumentException.class, () -> cartransport.move());
+        
     }
 
 }
