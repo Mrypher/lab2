@@ -4,15 +4,17 @@ public abstract class Car implements Movable {
 
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
+    protected int weight;
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     final String modelName; // The car model name
     private double[] position = {0,0}; //position of the car, [0] is x and [1] is y
     private String direction = "n";
 
-    public Car(int nrDoors, double enginePower, Color color, String modelname){
+    public Car(int nrDoors, double enginePower, int weight, Color color, String modelname){
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
+        this.weight = weight;
         this.color = color;
         this.modelName = modelname;
         stopEngine();
@@ -96,17 +98,12 @@ public abstract class Car implements Movable {
     }
 
     public void gas(double amount){
-        if( == 0){
             if(amount>0 && amount<1){
                 incrementSpeed(amount);
             }
             else{
                 throw new IllegalArgumentException("Oustide gas interval, must be between 0 and 1");
             }
-        }
-        else {
-            throw new IllegalArgumentException("Platform is in the wrong state to use gas");
-        }
     }
 
     public void brake(double amount){

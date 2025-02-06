@@ -4,8 +4,8 @@ public class Lastbilar extends Car{
 
     private int platform = 0;
 
-    public Lastbilar(int nrDoors, double enginePower, Color color, String modelname, int platform ) {
-        super(nrDoors, enginePower, color, modelname);
+    public Lastbilar(int nrDoors, double enginePower, int weight, Color color, String modelname, int platform ) {
+        super(nrDoors, enginePower, weight, color, modelname);
         this.platform = platform;
     }
 
