@@ -51,12 +51,10 @@ class CarTest{
         Assert.assertThrows(IllegalArgumentException.class, () -> car.brake(-0.5));
     }
 
-
-    CarTransport cartransport = new CarTransport();
-    Saab95 saab = new Saab95();
-
     @Test
     void TestLoad(){
+        CarTransport cartransport = new CarTransport();
+        Saab95 saab = new Saab95();
         cartransport.setPlatform();
         saab.gas(0.6);
         saab.gas(0.6);
@@ -73,6 +71,39 @@ class CarTest{
         assertEquals(new double[]{0.0,0.0}[0] , saab.getPosition()[0]);
         assertEquals(new double[]{0.0,0.0}[1] , saab.getPosition()[1]);
         Assert.assertThrows(IllegalArgumentException.class, () -> cartransport.move());
+    }
+
+    @Test
+    void TestWorkshop(){
+        Saab95 saab1 = new Saab95();
+        Saab95 saab2 = new Saab95();
+        Saab95 saab3 = new Saab95();
+        Volvo240 volvo1 = new Volvo240();
+        Volvo240 volvo2 = new Volvo240();
+        Volvo240 volvo3 = new Volvo240();
+
+        CarWorkshop VolvoWorkshop = new CarWorkshop(volvo1, 2, false);
+        CarWorkshop GenericWorkshop = new CarWorkshop(volvo3, 5, true);
+        
+        VolvoWorkshop.load(volvo1);
+        VolvoWorkshop.load(volvo2);
+        Assert.assertThrows(IllegalArgumentException.class, () -> VolvoWorkshop.load(volvo1));
+        Assert.assertThrows(IllegalArgumentException.class, () -> VolvoWorkshop.load(volvo3));
+        VolvoWorkshop.unload(volvo2);
+        Assert.assertThrows(IllegalArgumentException.class, () -> VolvoWorkshop.load(saab1));
+        VolvoWorkshop.unload(volvo1);
+
+        volvo1.gas(0.5);
+        volvo1.move();
+        GenericWorkshop.load(volvo1); 
+        GenericWorkshop.load(volvo2);
+        GenericWorkshop.load(volvo3);
+        GenericWorkshop.load(saab1);
+        GenericWorkshop.load(saab2);
+        Assert.assertThrows(IllegalArgumentException.class, () -> VolvoWorkshop.load(saab3));
+        assertEquals(5000, volvo1.getPosition()[1]);
+        GenericWorkshop.unload(volvo1);
+        assertEquals(0.75, volvo1.getPosition()[1]);
         
     }
 

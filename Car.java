@@ -24,7 +24,7 @@ public abstract class Car extends VehicleFramework{
     
     @Override
     public void move(){
-        if(this.Loaded){
+        if(!this.Loaded){
             super.move();
         }
         else{
@@ -34,7 +34,7 @@ public abstract class Car extends VehicleFramework{
 
     @Override
     public void turnLeft(){
-        if(this.Loaded){
+        if(!this.Loaded){
             super.turnLeft();
         }
         else{
@@ -44,7 +44,7 @@ public abstract class Car extends VehicleFramework{
 
     @Override
     public void turnRight(){
-        if(this.Loaded){
+        if(!this.Loaded){
             super.turnRight();
         }
         else{
@@ -54,7 +54,7 @@ public abstract class Car extends VehicleFramework{
 
     @Override
     public void gas(double amount){
-        if(this.Loaded){
+        if(!this.Loaded){
             super.gas(amount);
         }
         else{
@@ -64,7 +64,7 @@ public abstract class Car extends VehicleFramework{
 
     @Override
     public void brake(double amount){
-        if(this.Loaded){
+        if(!this.Loaded){
             super.brake(amount);
         }
         else{
