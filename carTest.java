@@ -104,8 +104,6 @@ class CarTest{
         assertEquals(5000, volvo1.getPosition()[1]);
         GenericWorkshop.unload(volvo1);
         assertEquals(0.75, volvo1.getPosition()[1]);
-        
     }
-
 }
 

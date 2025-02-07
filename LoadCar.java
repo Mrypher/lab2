@@ -5,11 +5,14 @@ public class LoadCar {
     public List<Car> cargo = new ArrayList<Car>();
     private int maxcars;
     protected double[] position;
-    protected double[] savepos;
+    protected List<double[]> savepos;
+    protected List<Car> saveindex;
 
     public LoadCar(int maxcars, double[] position){
         this.maxcars = maxcars;
         this.position = position;
+        savepos = new ArrayList<double[]>();
+        saveindex = new ArrayList<Car>();
     }
 
     protected void load(Car car){
@@ -17,7 +20,8 @@ public class LoadCar {
             if (car.weight < 2000){
                 if(!car.getLoaded()){
                 cargo.add(car);
-                savepos = new double[]{car.getPosition()[0], car.getPosition()[1]};
+                savepos.add(new double[]{car.getPosition()[0], car.getPosition()[1]});
+                saveindex.add(car);
                 car.position = this.position;
                 car.setLoaded();
                 }
@@ -38,6 +42,8 @@ public class LoadCar {
     protected void unload(Car car){
         cargo.remove(car);
         car.setLoaded();
-        car.position = savepos;
+        car.position = savepos.get(saveindex.indexOf(car));
+        saveindex.remove(savepos.get(saveindex.indexOf(car)));
+        savepos.remove(savepos.get(saveindex.indexOf(car)));
     }
 }
