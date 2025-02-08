@@ -1,8 +1,5 @@
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.awt.Color;
-
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -71,7 +68,7 @@ class CarTest{
         cartransport.setPlatform();
         cartransport.load(saab);
 
-        assertEquals(Color.red, cartransport.loadCar.cargo.get(0).getColor());
+        assertEquals(Color.red, cartransport.loadCar.getCargo().get(0).getColor());
         assertEquals(cartransport.getPosition()[0] , saab.getPosition()[0]);
         assertEquals(cartransport.getPosition()[1] , saab.getPosition()[1]);
         Assert.assertThrows(IllegalArgumentException.class, () -> cartransport.move());

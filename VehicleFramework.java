@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.util.Arrays;
 
-public class VehicleFramework implements Movable{
+public abstract class VehicleFramework implements Movable{
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected int weight;

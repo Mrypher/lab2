@@ -1,12 +1,12 @@
 import java.awt.*;
 
-public class Trucks extends VehicleFramework{
+public abstract class Trucks extends VehicleFramework{
 
-    private int platform = 0;
+    private int platform;
 
-    public Trucks(int nrDoors, double enginePower, int weight, Color color, String modelname, int platform ) {
+    public Trucks(int nrDoors, double enginePower, int weight, Color color, String modelname) {
         super(nrDoors, enginePower, weight, color, modelname);
-        this.platform = platform;
+        this.platform = 0;
     }
 
     public int getPlatform(){

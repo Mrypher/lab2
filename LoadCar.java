@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoadCar {
-    protected List<Car> cargo = new ArrayList<Car>();
+    private List<Car> cargo = new ArrayList<Car>();
     private int maxcars;
     protected double[] position;
 
@@ -36,5 +36,9 @@ public class LoadCar {
     protected void unload(Car car){
         cargo.remove(car);
         car.setLoaded();
+    }
+
+    public List<Car> getCargo(){
+        return cargo;
     }
 }
